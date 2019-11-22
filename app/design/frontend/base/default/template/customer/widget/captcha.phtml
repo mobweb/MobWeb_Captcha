@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author    Louis Bataillard <info@mobweb.ch>
+ * @package    MobWeb_Captcha
+ * @copyright    Copyright (c) MobWeb GmbH (https://mobweb.ch)
+ */
+?>
+<label for="<?php echo $this->getFieldId('captcha')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Captcha') ?></label>
+<div class="input-box">
+    <img src="<?php echo $this->getCaptchaUrl(); ?>" alt="<?php echo $this->getCaptchaDescription(); ?>" />
+    <p>
+        <br />
+        <?php echo $this->getCaptchaDescription(); ?>
+    </p>
+    <input type="text" id="<?php echo $this->getFieldId('captcha')?>" name="<?php echo $this->getFieldName('captcha')?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Captcha')) ?>" class="input-text <?php if ($this->isRequired()):?> required-entry <?php endif; ?>" <?php echo $this->getFieldParams() ?> />
+    </select>
+</div>

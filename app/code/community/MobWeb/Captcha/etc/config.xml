@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author    Louis Bataillard <info@mobweb.ch>
+ * @package    MobWeb_Captcha
+ * @copyright    Copyright (c) MobWeb GmbH (https://mobweb.ch)
+ */
+-->
+<config>
+    <modules>
+        <MobWeb_Captcha>
+            <version>1.0.0</version>
+        </MobWeb_Captcha>
+    </modules>
+    <global>
+        <helpers>
+            <mobweb_captcha>
+                <class>MobWeb_Captcha_Helper</class>
+            </mobweb_captcha>
+        </helpers>
+        <blocks>
+            <mobweb_captcha>
+                <class>MobWeb_Captcha_Block</class>
+            </mobweb_captcha>
+        </blocks>
+        <models>
+            <mobweb_captcha>
+                <class>MobWeb_Captcha_Model</class>
+            </mobweb_captcha>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <mobweb_captcha>
+                <use>standard</use>
+                <args>
+                    <module>MobWeb_Captcha</module>
+                    <frontName>mobweb_captcha</frontName>
+                </args>
+            </mobweb_captcha>
+        </routers>
+        <layout>
+            <updates>
+                <mobweb_captcha>
+                    <file>mobweb/captcha.xml</file>
+                </mobweb_captcha>
+            </updates>
+        </layout>
+        <events>
+            <controller_action_predispatch_customer_account_createpost>
+                <observers>
+                    <mobweb_captcha_controller_action_predispatch_customer_account_createpost>
+                        <type>singleton</type>
+                        <class>mobweb_captcha/observer</class>
+                        <method>controllerActionPredispatchCustomerAccountCreatepost</method>
+                    </mobweb_captcha_controller_action_predispatch_customer_account_createpost>
+                </observers>
+            </controller_action_predispatch_customer_account_createpost>
+        </events>
+        <translate>
+            <modules>
+                <mobweb_captcha>
+                    <files>
+                        <default>MobWeb_Captcha.csv</default>
+                    </files>
+                </mobweb_captcha>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <mobweb_captcha>
+            <general>
+                <enabled>0</enabled>
+            </general>
+            <captcha>
+                <charset>SWAEUK</charset>
+                <case_sensitive>0</case_sensitive>
+                <perturbation>0</perturbation>
+                <num_lines>2</num_lines>
+                <noise_level>1</noise_level>
+                <noise_level>1</noise_level>
+                <code_length>3</code_length>
+            </captcha>
+        </mobweb_captcha>
+    </default>
+</config>
